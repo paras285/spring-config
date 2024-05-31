@@ -10,9 +10,3 @@ This is used with @Component so that it is treated as Spring Bean.
 If No @PropertySource is mentioned, it will bind the properties only from application.properties
 
 @PropertySource: This annotation is used, if our properties are not in default property file i.e. application.properties and the properties are defined in some other property file. @PropertySource is used in combination to @ConfigurationProperties
-
-#SPRING-CLOUD CONFIG SERVER
-Spring Cloud Config Server is required when we want to externalize the configuration and make it centralized.
-
-To enable Config Server, Add a dependency of "spring-cloud-config-server" in pom.xml
-Add annotation of @EnableConfigServer on top of main class.
