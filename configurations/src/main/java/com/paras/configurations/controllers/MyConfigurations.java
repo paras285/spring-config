@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.paras.configurations.config.Configurations;
+import com.paras.configurations.config.ExternalConfiguration;
 
 @RestController
 public class MyConfigurations {
@@ -14,6 +15,13 @@ public class MyConfigurations {
 	private String authorName;
 
 	private Configurations configurations;
+	
+	private ExternalConfiguration externalConfigurations;
+	
+	@Autowired
+	public void setExternalConfigurations(ExternalConfiguration externalConfigurations) {
+		this.externalConfigurations = externalConfigurations;
+	}
 
 	@Autowired
 	public void setConfigurations(Configurations configurations) {
@@ -28,5 +36,10 @@ public class MyConfigurations {
 	@GetMapping("details")
 	public String details() {
 		return configurations.toString();
+	}
+	
+	@GetMapping("experiences")
+	public String experiences() {
+		return externalConfigurations.toString();
 	}
 }
