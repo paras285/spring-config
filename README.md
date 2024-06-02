@@ -16,3 +16,6 @@ Spring Cloud Config Server is required when we want to externalize the configura
 
 To enable Config Server, Add a dependency of "spring-cloud-config-server" in pom.xml
 Add annotation of @EnableConfigServer on top of main class.
+Add Properties in application.properties to let Spring know the GIT location
+*Example:
+spring.cloud.config.server.git.uri = https://github.com/paras285/spring-config-configurations.git
