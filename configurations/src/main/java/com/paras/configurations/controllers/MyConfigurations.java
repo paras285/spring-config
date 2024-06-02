@@ -15,9 +15,9 @@ public class MyConfigurations {
 	private String authorName;
 
 	private Configurations configurations;
-	
+
 	private ExternalConfiguration externalConfigurations;
-	
+
 	@Autowired
 	public void setExternalConfigurations(ExternalConfiguration externalConfigurations) {
 		this.externalConfigurations = externalConfigurations;
@@ -37,9 +37,17 @@ public class MyConfigurations {
 	public String details() {
 		return configurations.toString();
 	}
-	
+
 	@GetMapping("experiences")
 	public String experiences() {
 		return externalConfigurations.toString();
+	}
+
+	@Value("${key}")
+	private String key;
+
+	@GetMapping("key")
+	public String key() {
+		return key;
 	}
 }
