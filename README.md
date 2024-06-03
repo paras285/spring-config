@@ -32,17 +32,36 @@ To enable Spring Cloud Config Client
 
 Make sure the file is present in GIT location with name configuration.properties or configuration.yml
 
-#Scenarios
-*Scenario-1 If the key is present in Config Server and project locally
+Scenarios
+
+Scenario-1 If the key is present in Config Server and project locally
 Preference will be given to Config Server i.e., If key is preset in Config Server.
 Else, Spring will try to fetch the properties locally.
 
 If key is not available in both the location, application will fail.
 
-*Scenario-2 If the key is present in project locally only
+Scenario-2 If the key is present in project locally only
 It will fetch the key only from properties locally.
 
 If the key is not available in project locally, application will fail.
 
-*Scenario-2 If the key is not present in Config Server and Project
+Scenario-2 If the key is not present in Config Server and Project
 Application will fail directly
+
+#ENCRYPTION AND DECRYPTION IN CONFIG SERVER
+Config Server supports symmetrical and asymmetrical encryption/decryption
+It exposes 2 end-points
+/encrypt - To encrypt the key provided in the body
+/decrypt - To decrypt the key provided in the body
+
+<Encrypted_Key> fetched from /encrypt response is then used in Configurations
+Example:
+KEY = {cipher}<Encrypted_Key>
+
+#SYMMETRIAL ENCRYPTION/DECRYPTION IN CONFIG SERVER
+To support symmetrical encryption, add the following key in applcation.properties/application.yml of Config Server
+
+encrypt.key = <SECRET_KEY>
+
+Now, when any value needs to be bind, it will be responsibility of Spring Config Server to decrypt the value and bind it to field.
+Alternatively, /decrypt can be used to decrypt and see the value.
