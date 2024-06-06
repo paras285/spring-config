@@ -65,3 +65,23 @@ encrypt.key = <SECRET_KEY>
 
 Now, when any value needs to be bind, it will be responsibility of Spring Config Server to decrypt the value and bind it to field.
 Alternatively, /decrypt can be used to decrypt and see the value.
+
+
+#CONTAINERIZATION OF THESE SERVICES
+Creation of a docker image image from Docker File.
+
+docker build -t <ImageName:Version> .
+This will create a docker file from the given location with specified tag
+
+Example: 
+docker build -t configurations:latest .
+docker build -t config-server:latest .
+
+Creating a container from the docker image
+
+docker run --name <Container_Name> -p <HostAddress:ContainerHost> --network <CustomNetwork> <ImageName>
+
+Example:
+docker run --name configuration -p 8080:8080 --network default_network configurations:latest
+
+NOTE: Make sure the both servers are on same network so that they can communicate with each other using container name.
