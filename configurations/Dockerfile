@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:11
 WORKDIR /app
 ADD target/*.jar configurations.jar
 COPY . /app

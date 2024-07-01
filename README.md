@@ -85,3 +85,24 @@ Example:
 docker run --name configuration -p 8080:8080 --network default_network configurations:latest
 
 NOTE: Make sure the both servers are on same network so that they can communicate with each other using container name.
+
+#Profiling
+We can create the different applications propties w.r.t properties.
+The applications will be retrieved from the specific property file.
+
+Example:
+If dev profile is active, and Application name is configurations.
+There needs to be file present in configurations-dev.properties (ApplicationName-{profile}.properties)
+
+During Startup time, We can provide the profile that we are going to use.
+
+Normal JAR Execution
+java -jar -D spring.profiles.active=profile1,profile2 applicationName.jar
+
+Creation of Docker Image 
+CMD ["java","-jar","-D spring.profiles.active=profile1,profile2,"config-server.jar"]
+
+Docker Image
+docker run -e SPRING_PROFILES_ACTIVE=dev -p 8080:8080 --name containerName imageName:version
+
+Docker Compose file

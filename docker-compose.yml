@@ -1,0 +1,23 @@
+version: "3.6"
+services:
+  config-server:
+    image: paras285/config-server:latest
+    container_name: config-server
+    networks:
+      - my-network
+    ports:
+      - 8081:8081
+  configurations:
+    image: paras285/configurations:latest
+    container_name: configurations
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - my-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-server  # This line is added
+networks:
+  my-network:
+    external: true
