@@ -106,3 +106,4 @@ Docker Image
 docker run -e SPRING_PROFILES_ACTIVE=dev -p 8080:8080 --name containerName imageName:version
 
 Docker Compose file
+![image](https://github.com/paras285/spring-config/assets/57625232/141951e0-c84d-4163-bb87-25b307873625)
